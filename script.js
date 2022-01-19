@@ -1,8 +1,12 @@
 // DOM
 const startButton = document.getElementById('start-btn');
+const highScore = document.getElementById('HighScore');
+const timer = document.getElementById('displayTimer');
+const timeLeft = document.getElementById('timeLeft');
+const timeOut = document.getElementById('noTime');
 
 // Reg Vars
-var totalTime = 10;
+var totalTime = 30;
 
 //Function to start the quiz timer
 

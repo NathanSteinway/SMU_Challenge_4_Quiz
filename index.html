@@ -17,31 +17,56 @@
 
 <body style="background-color: #222222;">
 
-<!-- header containing welcome msg and brief description of rules -->
+    <div class="container-fluid">
 
-    <header>
-        <h1 class="font-weight-bold text-light text-center">
-            Welcome to Coding Quiz Challenge
-        </h1>
+        <div class="row">
 
-        <h2 class="text-light text-center">
-            Do your best to answer these questions about Javascript correctly within the time limit!
-        </h2>
+            <div class="col">
 
-    </header>
+                <a href="#" id="HighScore">Check Out Your High Score!</a>
 
-<!-- start button -->
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-2">
-                <button type="button" class="btn btn-success btn-lg" id="start-btn">
-
-                    START
-
-                </button>
             </div>
-        </div> 
+
+            <div id="displayTimer" class="col text-end text-light">
+
+                Time: <span id="timeLeft">0</span>
+
+            </div>
+
+            <div id="noTime" class="col text-end" style="display: none;">
+
+                Time has run out!
+
+            </div>
+
+        </div>
+
+        <!-- header containing welcome msg and brief description of rules -->
+
+        <header>
+            <h1 class="font-weight-bold text-light text-center">
+                Welcome to Coding Quiz Challenge
+            </h1>
+
+            <h2 class="text-light text-center">
+                Do your best to answer these questions about Javascript correctly within the time limit!
+            </h2>
+
+        </header>
+
+        <!-- start button -->
+
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-2">
+                    <button type="button" class="btn btn-success btn-lg" id="start-btn">
+
+                        START
+
+                    </button>
+                </div>
+            </div> 
+        </div>
     </div>
     
 
