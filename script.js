@@ -1,9 +1,24 @@
+// DOM
 const startButton = document.getElementById('start-btn');
 
-var startTimer = function() {
+// Reg Vars
+var totalTime = 10;
 
-    console.log('im working!');
-    
-}
+//Function to start the quiz timer
 
-startButton.addEventListener('click', startTimer);
+function newGame() {
+
+    var startTimer = setInterval(function() {
+
+            totalTime--;
+
+            if(totalTime <= 0) {
+                clearInterval(startTimer);
+                console.log('timer end');
+            }
+
+        },1000);
+};
+
+//Event Listener for start-btn
+startButton.addEventListener('click', newGame);
