@@ -5,9 +5,16 @@ const timer = document.getElementById('displayTimer');
 const timeLeft = document.getElementById('timeLeft');
 const timeOut = document.getElementById('noTime');
 const frontPage = document.getElementById('front-page');
+const displayedQuestion = document.getElementById('displayed-question');
+const quizPage = document.getElementById('quiz-page');
+var answer1 = document.getElementById("quiz-btn-0");
+var answer2 = document.getElementById("quiz-btn-1");
+var answer3 = document.getElementById("quiz-btn-2");
+var answer4 = document.getElementById("quiz-btn-3");
 
 // Reg Vars
 var totalTime = 10;
+var questionIndex = 0;
 
 //Array containing questions and their answers
 const questions = [
@@ -48,10 +55,17 @@ const questions = [
 
 function newGame() {
 
+    questionIndex = 0;
+
     var frontPage = document.getElementById('front-page');
 
         frontPage.classList.remove('d-block');
         frontPage.classList.add('d-none');
+
+    var quizPage = document.getElementById('quiz-page');
+
+        quizPage.classList.remove('d-none');
+        quizPage.classList.add('d-block');
 
 
     var startTimer = setInterval(function() {
@@ -61,10 +75,26 @@ function newGame() {
 
             if(totalTime <= 0) {
                 clearInterval(startTimer);
+                if(questionIndex < questions.length - 1) {
+                    
+                }
                 totalTime = 10;
             }
 
         },1000);
+
+    createQuiz();
+};
+
+function createQuiz() {
+
+    displayedQuestion.textContent = questions[questionIndex].question;
+
+    answer1.textContent = questions[questionIndex].choices[0];
+    answer2.textContent = questions[questionIndex].choices[1];
+    answer3.textContent = questions[questionIndex].choices[2];
+    answer4.textContent = questions[questionIndex].choices[3];
+
 };
 
 //Event Listener for start-btn
