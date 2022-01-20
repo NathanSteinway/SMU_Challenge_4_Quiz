@@ -42,7 +42,9 @@
 
         </div>
 
-        <div class="container d-block" id="front-page">
+        <!-- front page container created to make hiding easier -->
+
+        <div class="d-none" id="front-page">
         
             <!-- header containing welcome msg and brief description of rules -->
 
@@ -69,6 +71,23 @@
                         </button>
                     </div>
                 </div> 
+            </div>
+
+        </div>
+
+        <!-- Quiz Question pulled from array and displayed to user -->
+
+        <div class="d-none" id="quiz-page">
+
+            <p class="justify-content-center font-weight-bold" id="displayed-question">
+
+            </p>
+
+            <div class="justify-content-center">
+                <p><button class="btn-success" id="quiz-btn-1"></button></p>
+                <p><button class="btn-success" id="quiz-btn-2"></button></p>
+                <p><button class="btn-success" id="quiz-btn-3"></button></p>
+                <p><button class="btn-success" id="quiz-btn-4"></button></p>
             </div>
 
         </div>
