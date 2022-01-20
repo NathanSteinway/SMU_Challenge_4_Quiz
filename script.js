@@ -4,9 +4,10 @@ const highScore = document.getElementById('HighScore');
 const timer = document.getElementById('displayTimer');
 const timeLeft = document.getElementById('timeLeft');
 const timeOut = document.getElementById('noTime');
+const frontPage = document.getElementById('front-page');
 
 // Reg Vars
-var totalTime = 30;
+var totalTime = 10;
 
 //Array containing questions and their answers
 const questions = [
@@ -47,6 +48,12 @@ const questions = [
 
 function newGame() {
 
+    var frontPage = document.getElementById('front-page');
+
+        frontPage.classList.remove('d-block');
+        frontPage.classList.add('d-none');
+
+
     var startTimer = setInterval(function() {
 
             totalTime--;
@@ -54,7 +61,7 @@ function newGame() {
 
             if(totalTime <= 0) {
                 clearInterval(startTimer);
-                console.log('timer end');
+                totalTime = 10;
             }
 
         },1000);
