@@ -11,17 +11,18 @@ const endPage = document.getElementById('end-page');
 const endPageText = document.getElementById('end-page-text');
 const initialsField = document.getElementById('initials-field');
 const highScore = document.getElementById('yourHighScore');
-var answer1 = document.getElementById("quiz-btn-0");
-var answer2 = document.getElementById("quiz-btn-1");
-var answer3 = document.getElementById("quiz-btn-2");
-var answer4 = document.getElementById("quiz-btn-3");
-
-
+const yesNoBtns = document.getElementById('y-n-btns');
 
 // Reg Vars
 var totalTime = 30;
 var questionIndex = 0;
 var score = 0;
+var answer1 = document.getElementById("quiz-btn-0");
+var answer2 = document.getElementById("quiz-btn-1");
+var answer3 = document.getElementById("quiz-btn-2");
+var answer4 = document.getElementById("quiz-btn-3");
+var yesBtn = document.getElementById('y-btn');
+var noBtn = document.getElementById('n-btn');
 
 //Array containing questions and their answers
 const questions = [
@@ -156,11 +157,46 @@ function endQuiz() {
         endPage.classList.remove('d-none');
         endPage.classList.add('d-block');
 
+    var yesNoBtns = document.getElementById('y-n-btns');
+
+        yesNoBtns.classList.remove('d-none');
+        yesNoBtns.classList.add('d-block');
+
     var endPageText = document.getElementById('end-page-text');
 
-        endPage.textContent = 'Good Work! Below is your high score!';
+        endPageText.textContent = 'Your score is ' + score + '. Would you like to save it?';
 
 };
+
+document.getElementById('y-btn').onclick = function() {
+    saveScore();
+}
+
+document.getElementById('n-btn').onclick = function() {
+    refreshPage();
+}
+
+function refreshPage(){
+    window.location.reload();
+}
+
+function saveScore() {
+
+    var endPage = document.getElementById('end-page');
+
+        endPage.classList.remove('d-block');
+        endPage.classList.add('d-none');
+
+    var yesNoBtns = document.getElementById('y-n-btns');
+
+        yesNoBtns.classList.remove('d-block');
+        yesNoBtns.classList.add('d-none');
+
+}
+
+
+
+
 
 //Event Listener for start-btn
 startButton.addEventListener('click', newQuiz);
