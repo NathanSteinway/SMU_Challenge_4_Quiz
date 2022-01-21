@@ -9,7 +9,8 @@ const displayedQuestion = document.getElementById('displayed-question');
 const quizPage = document.getElementById('quiz-page');
 const endPage = document.getElementById('end-page');
 const endPageText = document.getElementById('end-page-text');
-const initialsField = document.getElementById('initials-field');
+const formContainer = document.getElementById('form-container')
+const initialsField = document.getElementById('initialsField');
 const highScore = document.getElementById('yourHighScore');
 const yesNoBtns = document.getElementById('y-n-btns');
 
@@ -23,6 +24,7 @@ var answer3 = document.getElementById("quiz-btn-2");
 var answer4 = document.getElementById("quiz-btn-3");
 var yesBtn = document.getElementById('y-btn');
 var noBtn = document.getElementById('n-btn');
+var tasks = [];
 
 //Array containing questions and their answers
 const questions = [
@@ -134,7 +136,7 @@ function answerCheck(answer) {
             endQuiz();
     }
 
-}
+};
 
 // Functions to pass an argument to the answerCheck function. 
 // I found that this is necessary because if you try to pass answerCheck[x] through the event listener, it "hears" it immediately and starts the game with -20 points.
@@ -168,19 +170,14 @@ function endQuiz() {
 
 };
 
-document.getElementById('y-btn').onclick = function() {
-    saveScore();
-}
-
-document.getElementById('n-btn').onclick = function() {
-    refreshPage();
-}
-
+//Function to refresh the page if the user decides they don't want to save their score.
 function refreshPage(){
     window.location.reload();
-}
+};
 
-function saveScore() {
+function saveScreen(event) {
+
+    event.preventDefault();
 
     var endPage = document.getElementById('end-page');
 
@@ -192,10 +189,23 @@ function saveScore() {
         yesNoBtns.classList.remove('d-block');
         yesNoBtns.classList.add('d-none');
 
+    var formContainer = document.getElementById('form-container')
+
+        formContainer.classList.remove('d-none');
+        formContainer.classList.add('d-block'); 
+
+};
+
+function saveScore(event) {
+
+    event.preventDefault();
+
+    if (initialsField.value === "") {
+        alert("Enter your initials.");
+        return;
+    }
+
 }
-
-
-
 
 
 //Event Listener for start-btn
@@ -206,4 +216,13 @@ answer1.addEventListener('click', picked1);
 answer2.addEventListener('click', picked2);
 answer3.addEventListener('click', picked3);
 answer4.addEventListener('click', picked4);
+
+//Listener for form field
+formContainer.addEventListener("submit", saveScore);
+
+//Yes and No buttons
+yesBtn.addEventListener('click', saveScreen);
+noBtn.addEventListener('click', refreshPage);
+
+
 
