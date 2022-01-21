@@ -17,14 +17,14 @@ const yesNoBtns = document.getElementById('y-n-btns');
 // Reg Vars
 var totalTime = 30;
 var questionIndex = 0;
-var score = 0;
+var finalScore = 0;
 var answer1 = document.getElementById("quiz-btn-0");
 var answer2 = document.getElementById("quiz-btn-1");
 var answer3 = document.getElementById("quiz-btn-2");
 var answer4 = document.getElementById("quiz-btn-3");
 var yesBtn = document.getElementById('y-btn');
 var noBtn = document.getElementById('n-btn');
-var tasks = [];
+var savedScoresArray = [];
 
 //Array containing questions and their answers
 const questions = [
@@ -116,7 +116,7 @@ function answerCheck(answer) {
     //If the picked option is the same as the answer stored in the array, increment score by 1! If it isn't, dock 5s off the clock.
     if (questions[questionIndex].answer === questions[questionIndex].options[answer]) {
 
-        score++;
+        finalScore++;
 
         } else {
             
@@ -166,7 +166,7 @@ function endQuiz() {
 
     var endPageText = document.getElementById('end-page-text');
 
-        endPageText.textContent = 'Your score is ' + score + '. Would you like to save it?';
+        endPageText.textContent = 'Your score is ' + finalScore + '. Would you like to save it?';
 
 };
 
@@ -196,6 +196,7 @@ function saveScreen(event) {
 
 };
 
+//This one reacts to the event of Yes or No btn to begin saving scores to local data w/ initials
 function saveScore(event) {
 
     event.preventDefault();
@@ -205,6 +206,24 @@ function saveScore(event) {
         return;
     }
 
+    var storeTheScore = localStorage.getItem(finalScore);
+
+    if (storeTheScore === null) {
+        savedScoresArray = [];
+    } else [
+        savedScoresArray = JSON.parse(storeTheScore)
+    ]
+
+    var storedScore = {
+        initials: initialsField.value,
+        score: finalScore
+    };
+
+    savedScoresArray.push(storedScore);
+
+    // stringify array in order to store in local
+    var savedScoresArrayString = JSON.stringify(savedScoresArray);
+    window.localStorage.setItem("score", savedScoresArrayString);
 }
 
 

@@ -22,12 +22,6 @@
         <!-- high score and time display -->
         <div class="row">
 
-            <div class="col">
-
-                <a href="#" id="HighScorePage">Check Out Your High Score!</a>
-
-            </div>
-
             <div class="col text-end text-light" id="displayTimer" >
 
                 Time: <span id="timeLeft">0</span>
@@ -100,14 +94,17 @@
 
         </div>
 
+        <!-- Yes or No buttons that appear after the quiz is over and the score is counted -->
+
         <div class="container justify-content-center text-center d-none" id="y-n-btns">
             <button class="btn-success" id="y-btn">Yes</button>
             <button class="btn-success" id="n-btn">No</button>
         </div>
 
+        <!-- form field that takes user INITIALS then puts them into an array to be stored to localstorage along with the score-->
         <form class="container justify-content-center text-center d-none" id="form-container">
             <label for="initialsLabel"></label>
-            <input type="text" class="form-control" id="initialsField" placeholder="INITIALS GO HERE">
+            <input type="text" class="form-control text-center" id="initialsField" placeholder="INITIALS GO HERE">
         </form>
 
     </div>
