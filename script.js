@@ -8,6 +8,8 @@ const frontPage = document.getElementById('front-page');
 const displayedQuestion = document.getElementById('displayed-question');
 const quizPage = document.getElementById('quiz-page');
 const endPage = document.getElementById('end-page');
+const endPageText = document.getElementById('end-page-text');
+const initialsField = document.getElementById('initials-field');
 var answer1 = document.getElementById("quiz-btn-0");
 var answer2 = document.getElementById("quiz-btn-1");
 var answer3 = document.getElementById("quiz-btn-2");
@@ -80,7 +82,7 @@ function newQuiz() {
                 if(questionIndex < questions.length - 1) {
                     endQuiz();
                 }
-                totalTime = 10;
+                totalTime = 5;
             }
 
         },1000);
@@ -110,8 +112,10 @@ function endQuiz() {
 
         endPage.classList.remove('d-none');
         endPage.classList.add('d-block');
-        endPage.textContent = 'Good Work!';
-    
+
+    var endPageText = document.getElementById('end-page-text');
+
+        endPage.textContent = 'Good Work! Below is your high score!';
 
 }
 
