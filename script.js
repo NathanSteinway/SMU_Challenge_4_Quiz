@@ -7,10 +7,12 @@ const timeOut = document.getElementById('noTime');
 const frontPage = document.getElementById('front-page');
 const displayedQuestion = document.getElementById('displayed-question');
 const quizPage = document.getElementById('quiz-page');
+const endPage = document.getElementById('end-page');
 var answer1 = document.getElementById("quiz-btn-0");
 var answer2 = document.getElementById("quiz-btn-1");
 var answer3 = document.getElementById("quiz-btn-2");
 var answer4 = document.getElementById("quiz-btn-3");
+
 
 // Reg Vars
 var totalTime = 10;
@@ -53,7 +55,7 @@ const questions = [
 
 //Function to start the quiz timer
 
-function newGame() {
+function newQuiz() {
 
     questionIndex = 0;
 
@@ -76,7 +78,7 @@ function newGame() {
             if(totalTime <= 0) {
                 clearInterval(startTimer);
                 if(questionIndex < questions.length - 1) {
-                    
+                    endQuiz();
                 }
                 totalTime = 10;
             }
@@ -97,5 +99,21 @@ function createQuiz() {
 
 };
 
+function endQuiz() {
+
+    var quizPage = document.getElementById('quiz-page');
+
+        quizPage.classList.remove('d-block');
+        quizPage.classList.add('d-none');
+
+    var endPage = document.getElementById('end-page');
+
+        endPage.classList.remove('d-none');
+        endPage.classList.add('d-block');
+        endPage.textContent = 'Good Work!';
+    
+
+}
+
 //Event Listener for start-btn
-startButton.addEventListener('click', newGame);
+startButton.addEventListener('click', newQuiz);
